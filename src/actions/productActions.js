@@ -23,10 +23,10 @@ export function createNewProductAction(product) {
 
         try {
             // put in API
-            await axiosClient.post('/products', product);
+            const res = await axiosClient.post('/products', product);
 
             // if everything goes well, update state
-           dispatch( addProductSuccess(product) );
+           dispatch( addProductSuccess(res.data) );
 
             // Alert
             Swal.fire(
@@ -34,6 +34,7 @@ export function createNewProductAction(product) {
                 'The product has been added successfully',
                 'success'
             );
+            return Promise.resolve();
 
         } catch (error) {
             console.log(error);
@@ -46,6 +47,7 @@ export function createNewProductAction(product) {
                 title: 'There was an error',
                 text: 'There was an error, try again'
             })
+            return Promise.reject();
         }
     }
 }

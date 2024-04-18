@@ -39,8 +39,12 @@ const Products = () => {
                     </tr>
                </thead>
                <tbody>
-                   { products.length === 0 ? 'There are no products' : (
-                       products.map(product => (
+                   { products.length === 0 ? 
+                   <tr>
+                   <td colSpan="3">There are no products</td>
+                 </tr>
+                   : (
+                       products.map((product) => (
                            <Product
                                 key={product.id}
                                 product={product}

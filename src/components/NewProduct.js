@@ -43,13 +43,13 @@ const NewProduct = ({history}) => {
         dispatch( hideAlertAction() );
 
         // create new product
-        addProduct({
-            name,
-            price
+        addProduct({ name, price }).then(() => {
+            // Only redirect after the product has been successfully added
+            history.push('/');
+        }).catch(() => {
+            // Handle error, stay on the page or show a message
+            console.log('Failed to add the product');
         });
-
-        // redirect
-        history.push('/');
     }
 
 

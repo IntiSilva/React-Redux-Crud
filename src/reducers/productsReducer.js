@@ -13,7 +13,7 @@ import {
     EDITED_PRODUCT_ERROR,
 } from '../types';
 
-// cada reducer tiene su propio state
+// every reducer has it's own state
 const initialState = {
     products: [],
     error: null,
